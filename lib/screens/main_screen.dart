@@ -13,7 +13,7 @@ class MainScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return AutoTabsScaffold(
+    return AutoTabsRouter(
       routes: [
         const HomeRouter(),
         const SearchRouter(),
@@ -21,14 +21,14 @@ class MainScreen extends StatelessWidget {
         const ShopRouter(),
         ProfileRouter()
       ],
-      // appBarBuilder: (context, tabsRouter) => AppBar(
-      //   title: const Text('Custom Bottom Navigation Bar'),
-      //   centerTitle: true,
-      //   leading: const AutoLeadingButton(),
-      // ),
-      bottomNavigationBuilder: (context, tabsRouter) {
-        return CustomBottomNavigationBar(tabsRouter: tabsRouter).instagram(context);
-      }
+      builder: (context, child, animation) {        
+        final tabsRouter = AutoTabsRouter.of(context);        
+
+        return Scaffold(
+          body: child,
+          bottomNavigationBar: CustomBottomNavigationBar(tabsRouter: tabsRouter).instagram(context)
+        );
+      },
     );
   }
 }
