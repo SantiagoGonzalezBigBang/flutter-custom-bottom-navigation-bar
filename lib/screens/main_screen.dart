@@ -26,6 +26,10 @@ class MainScreen extends StatelessWidget {
 
         return Scaffold(
           body: child,
+          // body: FadeTransition(
+          //   opacity: animation,
+          //   child: child
+          // ),
           bottomNavigationBar: CustomBottomNavigationBar(tabsRouter: tabsRouter).instagram(context)
         );
       },
